@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private SceneController scene = new SceneController();//temp
-    
+    private PlayerInput _input;
 
 
     [SerializeField] private WayPoints _wayPoints;
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
         _currentEnemyGang = _enemyGangs.GetCurrentGang();
         _currentWayPoint = _wayPoints.GetCurrentWayPoint();
         transform.position = _currentWayPoint.position;
+
+        _input = GetComponent<PlayerInput>();
 
         AssignAnimationIDs();
     }
@@ -72,9 +74,9 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            if (Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+            if (Physics.Raycast(_mainCamera.ScreenPointToRay(Input.GetTouch(0).position), out RaycastHit hit))
             {
                 Vector3 aimDir = (hit.point - _shootPoint.position).normalized;
                 Projectile currentProjectile = _spawner.ProjectilePool.GetFreeElement();
