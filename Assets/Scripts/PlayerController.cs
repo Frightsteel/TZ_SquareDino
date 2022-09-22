@@ -4,6 +4,8 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
+
+    private SceneController scene = new SceneController();
     
     [SerializeField] private WayPoints _wayPoints;
     [SerializeField] private EnemyGangs _enemyGangs;
@@ -14,13 +16,14 @@ public class PlayerController : MonoBehaviour
     private Camera _mainCamera;
 
     private Transform _currentWayPoint;
-    private int _currentEnemyCount; //
+    private Transform _currentEnemyGang;
 
     private void Start()
     {
         _mainCamera = Camera.main;
 
-        _currentWayPoint = _wayPoints.GetNextWayPoint();
+        _currentEnemyGang = _enemyGangs.GetCurrentGang();
+        _currentWayPoint = _wayPoints.GetCurrentWayPoint();
         transform.position = _currentWayPoint.position;
     }
 
@@ -32,12 +35,20 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (Vector3.Distance(transform.position, _currentWayPoint.position) < 1f && _enemyGangs.GetCurrentGangEnemyCount() == 0)
-        {
-            _currentEnemyCount = _enemyGangs.GetNextGangEnemyCount();//
-
+        if (Vector3.Distance(transform.position, _currentWayPoint.position) < 1f && _currentEnemyGang.childCount == 0)
+        {   
+            _currentEnemyGang = _enemyGangs.GetNextGang();
             _currentWayPoint = _wayPoints.GetNextWayPoint();
-            _agent.SetDestination(_currentWayPoint.position);
+
+            if (_currentEnemyGang != null || _currentWayPoint != null)
+            {
+                _agent.SetDestination(_currentWayPoint.position);
+            }
+            else
+            {
+                scene.RestartScene();
+            }
+            
         }
     }
 

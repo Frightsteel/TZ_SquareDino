@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class EnemyGangs : MonoBehaviour
 {
-    private int _currentEnemyGangInd = 0;
+    private int _currentGangInd = 0;
 
-    public int GetNextGangEnemyCount()
+    public Transform GetCurrentGang()
     {
-        _currentEnemyGangInd++;
-        int enemyCount = transform.GetChild(_currentEnemyGangInd).childCount;
-        return enemyCount;
+        if (_currentGangInd != transform.childCount)
+        {
+            Transform currentGang = transform.GetChild(_currentGangInd);
+            return currentGang;
+        }
+        else
+        {
+            return null;
+        }
     }
 
-    public int GetCurrentGangEnemyCount()
+    public Transform GetNextGang()
     {
-        int enemyCount = transform.GetChild(_currentEnemyGangInd).childCount;
-        return enemyCount;
+        _currentGangInd++;
+        return GetCurrentGang();
     }
 }

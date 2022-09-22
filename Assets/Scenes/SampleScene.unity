@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 70494262}
   m_Layer: 0
-  m_Name: Point (1)
+  m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,6 +440,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc12ae2f967ec04e8c3c39eeb92733b, type: 3}
+--- !u!1 &236519275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 236519276}
+  m_Layer: 0
+  m_Name: Gang (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &236519276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236519275}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 514812245}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &339644222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -826,6 +856,7 @@ Transform:
   - {fileID: 621971767}
   - {fileID: 131981267}
   - {fileID: 1461122280}
+  - {fileID: 236519276}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1248,7 +1279,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.14521314, y: -0.000000029486435, z: 0.0000000043276893, w: 0.98940045}
+  m_LocalRotation: {x: 0.14521317, y: 5.216099e-15, z: -6.5952394e-16, w: 0.98940045}
   m_LocalPosition: {x: 0, y: 10.1, z: -7.0950003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1629,7 +1660,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300433919}
-  m_LocalRotation: {x: 0.14521314, y: -0.000000029486435, z: 0.0000000043276893, w: 0.98940045}
+  m_LocalRotation: {x: 0.14521317, y: 5.216099e-15, z: -6.5952394e-16, w: 0.98940045}
   m_LocalPosition: {x: 0, y: 10.1, z: -7.0950003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1781,7 +1812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397904615}
   m_Layer: 0
-  m_Name: Point (3)
+  m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2092,7 +2123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1808766778}
   m_Layer: 0
-  m_Name: Point
+  m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2248,7 +2279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957015805}
   m_Layer: 0
-  m_Name: Point (2)
+  m_Name: Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

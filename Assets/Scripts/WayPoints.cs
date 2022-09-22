@@ -4,11 +4,23 @@ public class WayPoints : MonoBehaviour
 {
     private int _currentWayPointInd = 0;
 
+    public Transform GetCurrentWayPoint()
+    {
+        if (_currentWayPointInd != transform.childCount)
+        {
+            Transform currentPoint = transform.GetChild(_currentWayPointInd);
+            return currentPoint;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public Transform GetNextWayPoint()
     {
-        Transform nextPoint = transform.GetChild(_currentWayPointInd);
         _currentWayPointInd++;
-        return nextPoint;
+        return GetCurrentWayPoint();
     }
 
     private void OnDrawGizmos()
