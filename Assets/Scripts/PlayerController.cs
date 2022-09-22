@@ -4,14 +4,20 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] private Animator animator;
 
-    private SceneController scene = new SceneController();
+    private SceneController scene = new SceneController();//temp
     
+
+
     [SerializeField] private WayPoints _wayPoints;
     [SerializeField] private EnemyGangs _enemyGangs;
     [SerializeField] private Spawner _spawner;
 
     [SerializeField] private Transform _shootPoint;
+
+    // animations IDs
+    private int animIDMove;
 
     private Camera _mainCamera;
 
@@ -25,6 +31,13 @@ public class PlayerController : MonoBehaviour
         _currentEnemyGang = _enemyGangs.GetCurrentGang();
         _currentWayPoint = _wayPoints.GetCurrentWayPoint();
         transform.position = _currentWayPoint.position;
+
+        AssignAnimationIDs();
+    }
+
+    private void AssignAnimationIDs()
+    {
+        animIDMove = Animator.StringToHash("isMoving");
     }
 
     private void Update()
@@ -35,20 +48,25 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (Vector3.Distance(transform.position, _currentWayPoint.position) < 1f && _currentEnemyGang.childCount == 0)
-        {   
-            _currentEnemyGang = _enemyGangs.GetNextGang();
-            _currentWayPoint = _wayPoints.GetNextWayPoint();
+        if (Vector3.Distance(transform.position, _currentWayPoint.position) < 1f)
+        {
+            animator.SetBool(animIDMove, false);
 
-            if (_currentEnemyGang != null || _currentWayPoint != null)
+            if (_currentEnemyGang.childCount == 0)
             {
-                _agent.SetDestination(_currentWayPoint.position);
+                _currentEnemyGang = _enemyGangs.GetNextGang();
+                _currentWayPoint = _wayPoints.GetNextWayPoint();
+
+                if (_currentEnemyGang != null || _currentWayPoint != null)
+                {
+                    animator.SetBool(animIDMove, true);
+                    _agent.SetDestination(_currentWayPoint.position);
+                }
+                else
+                {
+                    scene.RestartScene();
+                }
             }
-            else
-            {
-                scene.RestartScene();
-            }
-            
         }
     }
 

@@ -4,6 +4,6 @@ public class Enemy : MonoBehaviour
 {
     public void Die()
     {
-        Destroy(transform.parent.gameObject);
+        Destroy(gameObject);
     }
 }
