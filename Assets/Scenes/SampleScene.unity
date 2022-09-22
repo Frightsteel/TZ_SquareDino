@@ -575,6 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 385622170}
+  - component: {fileID: 385622171}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -596,6 +597,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &385622171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385622169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ef369da0b34eb419889834babcb62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 8885278733535506583, guid: f2beab627fe4b8847b66bea71a90ff29, type: 3}
+  _poolSize: 3
+  _autoExpand: 1
 --- !u!1001 &407865332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -788,6 +804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 514812245}
+  - component: {fileID: 514812246}
   m_Layer: 0
   m_Name: Enemy Gangs
   m_TagString: Untagged
@@ -812,6 +829,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514812246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514812244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473ac86e25d9d3f4d91d95de81acadd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525456640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 758462281}
+  - component: {fileID: 758462282}
   m_Layer: 0
   m_Name: WayPoints
   m_TagString: Untagged
@@ -1129,6 +1159,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &758462282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758462280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db476497ada13aa4b8758e02c3c3bb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,6 +1717,7 @@ GameObject:
   - component: {fileID: 1469837637}
   - component: {fileID: 1469837636}
   - component: {fileID: 1469837641}
+  - component: {fileID: 1469837640}
   m_Layer: 0
   m_Name: EnemyModel
   m_TagString: Untagged
@@ -1758,6 +1801,18 @@ Transform:
   m_Father: {fileID: 662696732}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469837640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469837635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d93d0748290b70498d679e52d9da1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1469837641
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2134,6 +2189,7 @@ GameObject:
   - component: {fileID: 95389171663912660}
   - component: {fileID: 1045400802361375}
   - component: {fileID: 1045400802361376}
+  - component: {fileID: 1045400802361377}
   m_Layer: 3
   m_Name: SM_Character_Male_01
   m_TagString: Untagged
@@ -2176,6 +2232,23 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1045400802361377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045400802361374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fd97136897e4e4fab5615183ee5cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 1045400802361376}
+  _wayPoints: {fileID: 758462282}
+  _enemyGangs: {fileID: 514812246}
+  _spawner: {fileID: 385622171}
+  _shootPoint: {fileID: 4128732018459052}
 --- !u!1 &1063867539030316
 GameObject:
   m_ObjectHideFlags: 0
