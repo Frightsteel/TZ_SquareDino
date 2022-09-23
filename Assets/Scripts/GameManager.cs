@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool IsGameStarted;
+
     void Start()
     {
-        
+        Time.timeScale = 0f;
+        IsGameStarted = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (!IsGameStarted && Input.touchCount > 0)
+        {
+            Time.timeScale = 1f;
+            IsGameStarted = true;
+        }
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

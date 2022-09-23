@@ -4,17 +4,15 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private Animator animator;
-
-    private SceneController scene = new SceneController();//temp
-    private PlayerInput _input;
-
+    [SerializeField] private Animator _animator;
 
     [SerializeField] private WayPoints _wayPoints;
     [SerializeField] private EnemyGangs _enemyGangs;
     [SerializeField] private Spawner _spawner;
 
     [SerializeField] private Transform _shootPoint;
+
+    [SerializeField] private GameManager _gameManager;
 
     // animations IDs
     private int animIDMove;
@@ -32,8 +30,6 @@ public class PlayerController : MonoBehaviour
         _currentWayPoint = _wayPoints.GetCurrentWayPoint();
         transform.position = _currentWayPoint.position;
 
-        _input = GetComponent<PlayerInput>();
-
         AssignAnimationIDs();
     }
 
@@ -44,15 +40,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Move();
-        Shoot();
+        if (_gameManager.IsGameStarted)
+        {
+            Move();
+            Shoot();
+        }
     }
 
     private void Move()
     {
         if (Vector3.Distance(transform.position, _currentWayPoint.position) < 1f)
         {
-            animator.SetBool(animIDMove, false);
+            _animator.SetBool(animIDMove, false);
 
             if (_currentEnemyGang.childCount == 0)
             {
@@ -61,12 +60,12 @@ public class PlayerController : MonoBehaviour
 
                 if (_currentEnemyGang != null || _currentWayPoint != null)
                 {
-                    animator.SetBool(animIDMove, true);
+                    _animator.SetBool(animIDMove, true);
                     _agent.SetDestination(_currentWayPoint.position);
                 }
                 else
                 {
-                    scene.RestartScene();
+                    _gameManager.RestartScene();
                 }
             }
         }

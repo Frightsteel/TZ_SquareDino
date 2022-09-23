@@ -11,10 +11,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Enemy>())
+        if (!other.GetComponent<PlayerController>())
         {
-            other.GetComponent<Enemy>().Die();
-            
+            if (other.GetComponent<Enemy>())
+            {
+                other.GetComponent<Enemy>().Die();
+            }
+
+            gameObject.SetActive(false);
         }
     }
 }
